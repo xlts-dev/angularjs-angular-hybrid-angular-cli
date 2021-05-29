@@ -1,4 +1,4 @@
-# AngularJS/Angular Material Hybrid Demo
+# XLTS for AngularJS/Angular Hybrid Angular CLI Demo
 
 This was started on [StackBlitz](https://stackblitz.com/edit/angularjs-material-ngupgradelite-demo),
 based on a demo by [George Kalpakas](https://github.com/gkalpak), but using Angular Upgrade can be
@@ -19,15 +19,16 @@ Learn more in the [AngularJS Material Migration Guide](https://material.angularj
 
 ## Caveats found so far
 
-- Different `selector` formatting and conversions between AngularJS and Angular. It depends on which
-  framework refers to the component, not which framework compiled the component.
-  - AngularJS referring to any component: `appComponent`
+- Different `selector` formatting and conversions between [XLTS for AngularJS](https://xlts.dev/angularjs) and
+  [Angular](https://angular.io). It depends on which framework refers to the component, not which framework
+  compiled the component.
+  - XLTS for AngularJS referring to any component: `appComponent`
     - I.e. to use `<app-angularjs>` in `index.html`, it's defined as [`selector: appAngularjs`](https://github.com/Splaktar/angularjs-angular-material-hybrid-demo/blob/862bedffaae3e7a856b3c8e547dc9cc2d5551e4f/src/app/angularjs/app-angularjs.component.ts#L2)
   - Angular referring to any component: `app-component`
     - I.e. to use `<ng1-tabs>` in `app.component.html`, it's defined as [`selector: 'ng1-tabs'`](https://github.com/Splaktar/angularjs-angular-material-hybrid-demo/blob/862bedffaae3e7a856b3c8e547dc9cc2d5551e4f/src/app/angularjs/tabs.component.ts#L5)
 - ngUpgrade projects that work on StackBlitz, don’t work in the CLI and vice versa.
 
-### Minification-friendly AngularJS Code
+### Minification-friendly XLTS for AngularJS Code
 
 - Enable `strictDi` to help you catch issues early:
   - `angular.bootstrap(rootElement, [appAngularjsModule.name], { strictDi: true });`
@@ -43,18 +44,18 @@ Learn more in the [AngularJS Material Migration Guide](https://material.angularj
   - `static $inject = ['$scope'];`
   - [Example](https://github.com/Splaktar/angularjs-angular-material-hybrid-demo/blob/862bedffaae3e7a856b3c8e547dc9cc2d5551e4f/src/app/angularjs/tabs.component.ts#L8)
 
-### AngularJS Components w/ templateUrl
+### XLTS for AngularJS Components w/ templateUrl
 
-`templateUrl` in AngularJS components does not work out of the box with Angular CLI.
+`templateUrl` in XLTS for AngularJS components does not work out of the box with Angular CLI.
 The following steps will configure a module that loads `$templateCache` at build time:
 
 - `gulp-angular-templatecache` automates `$templateCache` loading. See simple [gulpfile](gulpfile.ts).
 - `gulp-htmlmin` minifies the templates before putting them in the `$templateCache`
 - The output goes in [src/app/angularjs/templates/templates.js](src/app/angularjs/templates/templates.js).
 - The [src/app/angularjs/templates/index.js](src/app/angularjs/templates/index.js) file sets up a module.
-- Then we import the module and use the `'templates'` string in our AngularJS module creation.
+- Then we import the module and use the `'templates'` string in our XLTS for AngularJS module creation.
 
-If you are working on AngularJS Templates (`.html` files referenced via `templateUrl`), and you want
+If you are working on XLTS for AngularJS Templates (`.html` files referenced via `templateUrl`), and you want
 to enable the Angular CLI to auto-reload on changes, run:
 
 ```sh
@@ -66,7 +67,7 @@ npm run watch:templates
 - [ ] Add some AngularJS Material services.
 - [ ] Add some Angular Material services.
 - [ ] Add some CDK services.
-- [x] Set up a watcher to rebuild AngularJS `$templateCache`
+- [x] Set up a watcher to rebuild XLTS for AngularJS `$templateCache`
 - [x] Customize the AngularJS Material theme.
 - [x] Customize the Angular Material theme.
 - [x] Add more AngularJS Material components.
