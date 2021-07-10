@@ -1,7 +1,7 @@
 // Should already be required, here for clarity
 require('angular');
 
-// Now load Angular Material
+// Now load the `templates` module
 require('./templates');
 
 // Export namespace
