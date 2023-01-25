@@ -1,0 +1,176 @@
+{
+  "ignorePatterns": ["!**/*"],
+  "overrides": [
+    {
+      "files": ["*.ts"],
+      "plugins": [
+        "import",
+        "@typescript-eslint",
+        "ban",
+        "eslint-plugin-rxjs",
+        "@typescript-eslint"
+      ],
+      "parserOptions": {
+        "project": ["tsconfig.json"],
+        "createDefaultProgram": true
+      },
+      "extends": [
+        "plugin:@typescript-eslint/recommended",
+        "plugin:import/recommended",
+        "plugin:prettier/recommended",
+        "plugin:rxjs/recommended",
+        "plugin:import/typescript",
+        "plugin:@angular-eslint/template/process-inline-templates",
+        "plugin:@angular-eslint/recommended"
+      ],
+      "rules": {
+        "@typescript-eslint/array-type": [
+          "error",
+          {
+            "default": "array"
+          }
+        ],
+        "@typescript-eslint/ban-types": "error",
+        "prettier/prettier": [
+          "warn",
+          {
+            "endOfLine": "auto"
+          }
+        ],
+        "ban/ban": [
+          "error",
+          {
+            "name": "fit",
+            "message": "We do not allow committing focused tests."
+          },
+          {
+            "name": "fdescribe",
+            "message": "We do not allow committing focused test suites."
+          },
+          {
+            "name": "xit",
+            "message": "We do not allow committing excluded tests."
+          },
+          {
+            "name": "xdescribe",
+            "message": "We do not allow committing excluded test suites."
+          },
+          {
+            "name": "debugger",
+            "message": "We do not allow committing debugger statements."
+          }
+        ],
+        "@typescript-eslint/no-inferrable-types": "off",
+        "@typescript-eslint/no-namespace": "off",
+        "prefer-object-spread": "warn",
+        "@typescript-eslint/consistent-type-definitions": "error",
+        "@typescript-eslint/dot-notation": "off",
+        "@typescript-eslint/member-delimiter-style": [
+          "off",
+          {
+            "multiline": {
+              "delimiter": "none",
+              "requireLast": true
+            },
+            "singleline": {
+              "delimiter": "semi",
+              "requireLast": false
+            }
+          }
+        ],
+        "@typescript-eslint/no-explicit-any": "warn",
+        "@typescript-eslint/no-var-requires": "error",
+        "@typescript-eslint/prefer-for-of": "off",
+
+        "@typescript-eslint/quotes": [
+          "error",
+          "single",
+          {
+            "avoidEscape": true
+          }
+        ],
+        "@typescript-eslint/naming-convention": [
+          "error",
+          {
+            "selector": "variable",
+            "format": ["camelCase", "UPPER_CASE"],
+            "leadingUnderscore": "allow"
+          }
+        ],
+        "@typescript-eslint/no-non-null-assertion": "error",
+        "@typescript-eslint/semi": ["off", null],
+        "@typescript-eslint/type-annotation-spacing": "off",
+        "arrow-parens": ["off", "always"],
+        "brace-style": ["off", "off"],
+        "eol-last": "off",
+        "linebreak-style": "off",
+        "new-parens": "off",
+        "newline-per-chained-call": "off",
+        "no-extra-semi": "off",
+        "no-irregular-whitespace": "off",
+        "no-redeclare": "error",
+        "no-trailing-spaces": "off",
+        "prefer-const": "error",
+        "max-classes-per-file": ["error", 2],
+        "no-underscore-dangle": "off",
+        "quote-props": "off",
+        "space-before-function-paren": "off",
+        "space-in-parens": ["off", "never"],
+        "import/no-unresolved": "error",
+        "sort-imports": [
+          "error",
+          {
+            "ignoreCase": false,
+            "ignoreDeclarationSort": true,
+            "ignoreMemberSort": false,
+            "allowSeparatedGroups": true
+          }
+        ],
+        "rxjs/no-implicit-any-catch": "error",
+        "rxjs/no-finnish": "error",
+        "rxjs/no-create": "error",
+        "rxjs/no-nested-subscribe": "error",
+        "rxjs/no-subject-value": "error",
+        "rxjs/no-unbound-methods": "off",
+        "rxjs/no-unsafe-takeuntil": [
+          "error",
+          {
+            "allow": []
+          }
+        ],
+        "@angular-eslint/directive-selector": [
+          "error",
+          {
+            "type": "attribute",
+            "prefix": "app",
+            "style": "camelCase"
+          }
+        ],
+        "@angular-eslint/component-selector": [
+          "error",
+          {
+            "type": "element",
+            "prefix": "app",
+            "style": "kebab-case"
+          }
+        ]
+      },
+      "settings": {
+        "import/parsers": {
+          "@typescript-eslint/parser": [".ts", ".tsx"]
+        },
+        "import/resolver": {
+          "typescript": {
+            "alwaysTryTypes": true,
+            "project": ["tsconfig.json"]
+          }
+        }
+      }
+    },
+    {
+      "files": ["*.html"],
+      "extends": ["plugin:@angular-eslint/template/recommended"],
+      "rules": {}
+    }
+  ]
+}

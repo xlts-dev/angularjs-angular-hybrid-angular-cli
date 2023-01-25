@@ -1,6 +1,6 @@
+import { ArrayDataSource } from '@angular/cdk/collections';
 import { Component } from '@angular/core';
 import { FlatTreeControl } from '@angular/cdk/tree';
-import { ArrayDataSource } from '@angular/cdk/collections';
 
 const TREE_DATA: ExampleFlatNode[] = [
   {

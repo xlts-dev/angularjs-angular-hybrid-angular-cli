@@ -1,9 +1,9 @@
-import { enableProdMode, StaticProvider } from '@angular/core';
-import { setAngularJSGlobal } from '@angular/upgrade/static';
 import * as angular from 'angular';
+import { StaticProvider, enableProdMode } from '@angular/core';
+import { MainAngularModule } from '../angular/main-angular.module';
 import { environment } from '../../environments/environment';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { MainAngularModule } from '../angular/main-angular.module';
+import { setAngularJSGlobal } from '@angular/upgrade/static';
 
 export function bootstrapAngular(extraProviders: StaticProvider[]): any {
   setAngularJSGlobal(angular);

@@ -1,11 +1,11 @@
 import { Directive, ElementRef, Injector } from '@angular/core';
-import { UpgradeComponent } from '@angular/upgrade/static';
 import { IScope } from 'angular';
+import { UpgradeComponent } from '@angular/upgrade/static';
 
 export const tabsComponent = {
-  selector: 'ng1-tabs',
+  selector: 'app-ng1-tabs',
   templateUrl: '/tabs.component.html',
-  controller: class TabsComponent {
+  controller: class TabsCtrl {
     static $inject = ['$scope'];
     $digestCount = 0;
 
@@ -21,7 +21,7 @@ export const tabsComponent = {
 };
 
 @Directive({ selector: tabsComponent.selector })
-export class TabsComponentFacade extends UpgradeComponent {
+export class TabsComponentDirective extends UpgradeComponent {
   constructor(elementRef: ElementRef, injector: Injector) {
     super(tabsComponent.selector, elementRef, injector);
   }

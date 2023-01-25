@@ -1,12 +1,11 @@
-import * as angular from 'angular';
 import { Directive, ElementRef, Injector, VERSION } from '@angular/core';
+import { IWindowService, version as ngjsVersion } from 'angular';
+import { UpgradeComponent } from '@angular/upgrade/static';
 import { VERSION as cdkVersion } from '@angular/cdk';
 import { VERSION as matVersion } from '@angular/material/core';
-import { UpgradeComponent } from '@angular/upgrade/static';
-import { IWindowService } from 'angular';
 
 export const versionStampComponent = {
-  selector: 'version-stamp',
+  selector: 'app-version-stamp',
   template: `
     <style>
       .version-container {
@@ -31,20 +30,20 @@ export const versionStampComponent = {
 
     <md-divider id="version-stamp-divider"></md-divider>
     <div class="version-container">
-      <span class="version"><img src="/assets/angularjs.svg" alt="AngularJS icon" height="24px"> AngularJS v{{ $ctrl.versions.angularjs.full }} ({{ $ctrl.versions.angularjs.codeName }})</span>
-      <span class="version"><img src="/assets/angularjs-material.png" alt="AngularJS Material icon" height="24px"> AngularJS Material v{{ $ctrl.versions.md }}</span>
-      <span class="version"><img src="/assets/angular.svg" alt="Angular icon" height="24px"> Angular v{{ $ctrl.versions.angular }}</span>
-      <span class="version"><img src="/assets/angular-cdk.svg" alt="Angular CDK icon" height="24px"> Angular CDK v{{ $ctrl.versions.cdk }}</span>
-      <span class="version"><img src="/assets/angular-material.svg" alt="Angular Material icon" height="24px"> Angular Material v{{ $ctrl.versions.mat }}</span>
+      <span class="version"><img src="/assets/angularjs.svg" alt="" height="24px"> AngularJS v{{ $ctrl.versions.angularjs.full }} ({{ $ctrl.versions.angularjs.codeName }})</span>
+      <span class="version"><img src="/assets/angularjs-material.png" alt="" height="24px"> AngularJS Material v{{ $ctrl.versions.md }}</span>
+      <span class="version"><img src="/assets/angular.svg" alt="" height="24px"> Angular v{{ $ctrl.versions.angular }}</span>
+      <span class="version"><img src="/assets/angular-cdk.svg" alt="" height="24px"> Angular CDK v{{ $ctrl.versions.cdk }}</span>
+      <span class="version"><img src="/assets/angular-material.svg" alt="" height="24px"> Angular Material v{{ $ctrl.versions.mat }}</span>
     </div>
   `,
-  controller: class VersionStampComponent {
+  controller: class VersionStampCtrl {
     static $inject = ['$window'];
     versions: object;
 
     constructor($window: IWindowService) {
       this.versions = {
-        angularjs: angular.version,
+        angularjs: ngjsVersion,
         md: $window.ngMaterial.version.full,
         angular: VERSION.full,
         cdk: cdkVersion.full,
@@ -55,7 +54,7 @@ export const versionStampComponent = {
 };
 
 @Directive({ selector: versionStampComponent.selector })
-export class VersionStampComponentFacade extends UpgradeComponent {
+export class VersionStampComponentDirective extends UpgradeComponent {
   constructor(elementRef: ElementRef, injector: Injector) {
     super(versionStampComponent.selector, elementRef, injector);
   }

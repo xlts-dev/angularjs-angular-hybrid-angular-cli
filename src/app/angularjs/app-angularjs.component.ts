@@ -1,7 +1,7 @@
-export const appAngularJSComponent = {
+export const appAngularjsComponent = {
   selector: 'appAngularjs',
   template: '<app-component [name]="$ctrl.name"></app-component>',
-  controller: class AngularComponent {
+  controller: class AppAngularjsCtrl {
     name = 'AngularJS/Angular Material';
   },
 };
