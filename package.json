@@ -21,7 +21,7 @@
     "smex": "source-map-explorer",
     "deploy": "npm run build:templates && ng deploy",
     "update": "npm-check -u",
-    "prepare": "npx playwright install"
+    "prepare": "husky install && npx playwright install"
   },
   "dependencies": {
     "@angular/animations": "15.1.1",
