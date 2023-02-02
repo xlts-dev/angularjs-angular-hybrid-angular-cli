@@ -8,12 +8,12 @@ import { AngularMaterialCdkTreePage } from '../pages/angular-material-cdk-tree-p
 import { AngularMaterialButtonsPage } from '../pages/angular-material-buttons-page';
 import { TopNavPage } from '../pages/top-nav-page';
 
-test.describe('AngularJS-Angular hybrid app', function() {
+test.describe('AngularJS-Angular hybrid app', () => {
   test.beforeEach(async ({page}) => {
     await page.goto('http://localhost:4200/');
   });
 
-  test.describe('Components built for AngularJS', function() {
+  test.describe('Components built for AngularJS', () => {
     test.beforeEach(async ({page}) => {
       const angularJsPanelPage = new AngularJSPanelPage(page);
       await angularJsPanelPage.clickOnAngularJSExpansionPanel();
@@ -44,7 +44,7 @@ test.describe('AngularJS-Angular hybrid app', function() {
   });
 
 
-  test.describe('Components built for Angular', function() {
+  test.describe('Components built for Angular', () => {
     test.beforeEach(async ({page}) => {
       const angularPanelPage = new AngularPanelPage(page);
       await angularPanelPage.clickOnAngularExpansionPanel();
@@ -113,7 +113,7 @@ test.describe('AngularJS-Angular hybrid app', function() {
     });
   });
 
-  test.describe('TopNav', function() {
+  test.describe('TopNav', () => {
     test('ToNav title', async ({page}) => {
       const topNavPage = new TopNavPage(page);
       const title = await topNavPage.title;

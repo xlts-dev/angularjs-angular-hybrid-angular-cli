@@ -11,7 +11,7 @@ export class AngularjsMaterialTabsPage {
     this.page = page;
     this.tabTwo = page.getByRole('tab', { name: 'Tab two' });
     this.tabTwoContent = page.getByTestId('tab-two-content');
-    this.tabThree = page.getByRole('tab', { name: 'Tab three' })
+    this.tabThree = page.getByRole('tab', { name: 'Tab three' });
     this.tabThreeContent = page.getByTestId('ngjs-tab-three-content');
     this.buttons = page.getByRole('tab', { name: 'Buttons' });
   }
