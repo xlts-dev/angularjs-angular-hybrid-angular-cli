@@ -15,7 +15,7 @@ export class TopNavPage {
 
   async getGithubRepoName(): Promise<Locator> {
     const gitHubPage = await this.page.waitForEvent('popup');
-    return gitHubPage.getByRole('link', { name: 'angularjs-angular-material-hybrid-demo' })
+    return gitHubPage.getByRole('link', { name: 'angularjs-angular-material-hybrid-demo' });
   }
 }
 
