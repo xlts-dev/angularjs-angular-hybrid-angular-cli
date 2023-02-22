@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { expect, test } from '@playwright/test';
 import { AngularJSPanelPage } from '../pages/angularjs-panel-page';
 import { AngularPanelPage } from '../pages/angular-panel-page';
 import { AngularjsMaterialTabsPage } from '../pages/angularjs-material-tabs-page';
