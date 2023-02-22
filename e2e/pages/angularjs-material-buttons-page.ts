@@ -5,6 +5,7 @@ export class AngularjsMaterialButtonsPage {
   readonly buttons: Locator;
   readonly flatButtons: Locator;
   readonly raisedButtons: Locator;
+
   constructor(page: Page) {
     this.page = page;
     this.buttons = page.getByRole('tab', { name: 'Buttons' });

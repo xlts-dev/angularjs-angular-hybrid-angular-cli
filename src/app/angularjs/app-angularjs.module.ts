@@ -4,7 +4,7 @@ import 'angular-aria';
 import 'angular-messages';
 import 'angular-material';
 import 'angular-sanitize';
-import './templates/index';
+import './templates/templates';
 import { downgradeComponent, downgradeModule } from '@angular/upgrade/static';
 import { environment } from '../../environments/environment';
 import { AppComponent } from '../angular/app.component';

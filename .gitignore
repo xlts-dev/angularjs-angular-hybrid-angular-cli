@@ -47,6 +47,8 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+templates
 /test-results/
 /playwright-report/
 /playwright/.cache/

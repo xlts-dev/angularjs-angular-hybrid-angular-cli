@@ -10,7 +10,17 @@ import { TopNavPage } from '../pages/top-nav-page';
 
 test.describe('AngularJS-Angular hybrid app', () => {
   test.beforeEach(async ({page}) => {
-    await page.goto('http://localhost:4200/');
+    await page.goto('');
+  });
+
+  test.afterEach(async ({ page }) => {
+    const errorLogs: string[] = [];
+    page.on('console', message => {
+      if (message.type() === 'error') {
+        errorLogs.push(message.text());
+      }
+    });
+    expect(errorLogs).toStrictEqual([]);
   });
 
   test.describe('Components built for AngularJS', () => {
@@ -29,15 +39,18 @@ test.describe('AngularJS-Angular hybrid app', () => {
       await angularjsMaterialTabsPage.clickOnTabThree();
       await expect(angularjsMaterialTabsPage.tabThree).toHaveText('Tab three');
       await expect(angularjsMaterialTabsPage.tabThreeContent).toHaveText('Tab three content');
+      await expect(angularjsMaterialTabsPage.tabTwoContent).not.toBeVisible();
 
       await angularjsMaterialTabsPage.clickOnButtonsTab();
       await expect(angularjsMaterialTabsPage.buttons).toHaveText('Buttons');
+      await expect(angularjsMaterialTabsPage.tabThreeContent).not.toBeVisible();
     });
 
     test('Buttons', async ({page}) => {
       const angularjsMaterialButtonsPage = new AngularjsMaterialButtonsPage(page);
 
-      await page.waitForTimeout(1000);
+      await page.waitForLoadState('domcontentloaded');
+
       await expect(await angularjsMaterialButtonsPage.flatButtons.all()).toHaveLength(5);
       await expect(await angularjsMaterialButtonsPage.raisedButtons.all()).toHaveLength(5);
     });
@@ -63,11 +76,14 @@ test.describe('AngularJS-Angular hybrid app', () => {
 
       await angularMaterialTabsPage.clickOnButtonsTab();
       await expect(angularMaterialTabsPage.buttons).toHaveText('Buttons');
+      await expect(angularMaterialTabsPage.tabThreeContent).not.toBeVisible();
     });
 
     test('Buttons', async ({page}) => {
       const angularMaterialButtonsPage = new AngularMaterialButtonsPage(page);
-      await page.waitForTimeout(1000);
+
+      await page.waitForLoadState('domcontentloaded');
+
       await expect(await angularMaterialButtonsPage.basicButtons.all()).toHaveLength(5);
       await expect(await angularMaterialButtonsPage.basicLinks.all()).toHaveLength(1);
       await expect(angularMaterialButtonsPage.disabledBasicButtons).toBeDisabled();

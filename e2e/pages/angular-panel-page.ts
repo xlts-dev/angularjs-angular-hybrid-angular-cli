@@ -5,7 +5,6 @@ export class AngularPanelPage {
 
   constructor(page: Page) {
     this.page = page;
-
   }
 
   async clickOnAngularExpansionPanel(): Promise<void> {

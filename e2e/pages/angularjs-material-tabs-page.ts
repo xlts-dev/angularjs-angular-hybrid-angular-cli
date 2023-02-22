@@ -7,6 +7,7 @@ export class AngularjsMaterialTabsPage {
   readonly tabThree: Locator;
   readonly tabThreeContent: Locator;
   readonly buttons: Locator;
+
   constructor(page: Page) {
     this.page = page;
     this.tabTwo = page.getByRole('tab', { name: 'Tab two' });
