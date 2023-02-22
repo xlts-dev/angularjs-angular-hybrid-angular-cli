@@ -11,14 +11,13 @@ import { CdkTreeService } from './cdk-tree.service';
 })
 export class CdkTreeComponent {
   static selector = 'appCdkTree';
-  private treeData: ExampleFlatNode[] = this.cdkTreeService.getTreeData()
+  private treeData: ExampleFlatNode[] = this.cdkTreeService.getTreeData();
   treeControl = new FlatTreeControl<ExampleFlatNode>(
     node => node.level,
     node => node.expandable
   );
 
-  constructor(private cdkTreeService: CdkTreeService) {
-  }
+  constructor(private cdkTreeService: CdkTreeService) {}
 
   dataSource = new ArrayDataSource(this.treeData);
 

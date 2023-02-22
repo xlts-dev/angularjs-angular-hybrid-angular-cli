@@ -37,7 +37,7 @@ import { VersionStampComponentDirective } from '../angularjs/version-stamp.compo
     MatButtonModule,
     MatIconModule,
     MatDividerModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
   ],
   declarations: [
     AppComponent,
@@ -48,9 +48,7 @@ import { VersionStampComponentDirective } from '../angularjs/version-stamp.compo
     CdkTreeComponent,
     TopNavComponent,
   ],
-  providers: [
-    CdkTreeService
-  ]
+  providers: [CdkTreeService],
 })
 export class MainAngularModule {
   // eslint-disable-next-line

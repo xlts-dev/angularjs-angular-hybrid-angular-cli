@@ -10,8 +10,6 @@ import { environment } from '../../environments/environment';
 import { AppComponent } from '../angular/app.component';
 import { appAngularjsComponent } from './app-angularjs.component';
 import { bootstrapAngular } from './bootstrap-module';
-
-
 import { tabsComponent } from './tabs.component';
 import { versionStampComponent } from './version-stamp.component';
 

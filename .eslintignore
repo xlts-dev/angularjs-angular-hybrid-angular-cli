@@ -1,0 +1,7 @@
+# Ignore miscellaneous folders
+.github/
+.idea/
+node_modules/
+dist/
+tmp/
+templates/
