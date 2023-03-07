@@ -16,16 +16,4 @@ export class AngularjsMaterialTabsPage {
     this.tabThreeContent = page.getByTestId('ngjs-tab-three-content');
     this.buttons = page.getByRole('tab', { name: 'Buttons' });
   }
-
-  async clickOnButtonsTab(): Promise<void> {
-    await this.buttons.click();
-  }
-
-  async clickOnTabTwo(): Promise<void> {
-    await this.tabTwo.click();
-  }
-
-  async clickOnTabThree(): Promise<void> {
-    await this.tabThree.click();
-  }
 }

@@ -9,17 +9,25 @@ import { AngularMaterialButtonsPage } from '../pages/angular-material-buttons-pa
 import { TopNavPage } from '../pages/top-nav-page';
 
 test.describe('AngularJS-Angular hybrid app', () => {
-  test.beforeEach(async ({page}) => {
-    await page.goto('');
-  });
+  let errorLogs: string[];
 
-  test.afterEach(async ({ page }) => {
-    const errorLogs: string[] = [];
+  test.beforeEach(async ({page}) => {
+    errorLogs = [];
+
     page.on('console', message => {
       if (message.type() === 'error') {
         errorLogs.push(message.text());
       }
     });
+
+    page.on('pageerror', err => {
+      errorLogs.push(err.message);
+    });
+
+    await page.goto('');
+  });
+
+  test.afterEach(async ({ page }) => {
     expect(errorLogs).toStrictEqual([]);
   });
 
@@ -32,16 +40,16 @@ test.describe('AngularJS-Angular hybrid app', () => {
     test('Tabs', async ({page}) => {
       const angularjsMaterialTabsPage = new AngularjsMaterialTabsPage(page);
 
-      await angularjsMaterialTabsPage.clickOnTabTwo();
+      await angularjsMaterialTabsPage.tabTwo.click();
       await expect(angularjsMaterialTabsPage.tabTwo).toHaveText('Tab two');
       await expect(angularjsMaterialTabsPage.tabTwoContent).toHaveText('Tab two content');
 
-      await angularjsMaterialTabsPage.clickOnTabThree();
+      await angularjsMaterialTabsPage.tabThree.click();
       await expect(angularjsMaterialTabsPage.tabThree).toHaveText('Tab three');
       await expect(angularjsMaterialTabsPage.tabThreeContent).toHaveText('Tab three content');
       await expect(angularjsMaterialTabsPage.tabTwoContent).not.toBeVisible();
 
-      await angularjsMaterialTabsPage.clickOnButtonsTab();
+      await angularjsMaterialTabsPage.buttons.click();
       await expect(angularjsMaterialTabsPage.buttons).toHaveText('Buttons');
       await expect(angularjsMaterialTabsPage.tabThreeContent).not.toBeVisible();
     });
@@ -56,7 +64,6 @@ test.describe('AngularJS-Angular hybrid app', () => {
     });
   });
 
-
   test.describe('Components built for Angular', () => {
     test.beforeEach(async ({page}) => {
       const angularPanelPage = new AngularPanelPage(page);
@@ -66,15 +73,15 @@ test.describe('AngularJS-Angular hybrid app', () => {
     test('Tabs', async ({page}) => {
       const angularMaterialTabsPage = new AngularMaterialTabsPage(page);
 
-      await angularMaterialTabsPage.clickOnCdkTreeTab();
+      await angularMaterialTabsPage.cdkTree.click();
       await expect(angularMaterialTabsPage.cdkTree).toHaveText('CDK Tree');
 
 
-      await angularMaterialTabsPage.clickOnTabThree();
+      await angularMaterialTabsPage.tabThree.click();
       await expect(angularMaterialTabsPage.tabThree).toHaveText('Tab Three');
       await expect(angularMaterialTabsPage.tabThreeContent).toHaveText('Tab three content');
 
-      await angularMaterialTabsPage.clickOnButtonsTab();
+      await angularMaterialTabsPage.buttons.click();
       await expect(angularMaterialTabsPage.buttons).toHaveText('Buttons');
       await expect(angularMaterialTabsPage.tabThreeContent).not.toBeVisible();
     });
@@ -107,7 +114,7 @@ test.describe('AngularJS-Angular hybrid app', () => {
       const angularMaterialTabsPage = new AngularMaterialTabsPage(page);
       const angularMaterialCdkTreePage = new AngularMaterialCdkTreePage(page);
 
-      await angularMaterialTabsPage.clickOnCdkTreeTab();
+      await angularMaterialTabsPage.cdkTree.click();
 
       await angularMaterialCdkTreePage.clickOnFruit();
       await expect(angularMaterialCdkTreePage.apple).toBeVisible();
@@ -130,19 +137,20 @@ test.describe('AngularJS-Angular hybrid app', () => {
   });
 
   test.describe('TopNav', () => {
-    test('ToNav title', async ({page}) => {
+    test('Title', async ({page}) => {
       const topNavPage = new TopNavPage(page);
       const title = await topNavPage.title;
       await expect(title).toHaveText('Angular Upgrade and Angular CLI Demo');
     });
 
-    test('Redirect to GitHub page', async ({page}) => {
+    test('GitHub link', async ({page}) => {
       const topNavPage = new TopNavPage(page);
 
       await topNavPage.clickOnGitHubIcon();
 
-      const githubRepoName = await topNavPage.getGithubRepoName();
-      await expect(githubRepoName).toHaveText('angularjs-angular-material-hybrid-demo');
+      const githubRepoName = await page.waitForEvent('popup');
+
+      await expect(githubRepoName.url()).toBe('https://github.com/Splaktar/angularjs-angular-material-hybrid-demo');
     });
   });
 });

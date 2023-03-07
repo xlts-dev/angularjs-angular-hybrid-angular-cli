@@ -84,7 +84,7 @@ export class CdkTreeComponent {
 
   hasChild = (_: number, node: ExampleFlatNode) => node.expandable;
 
-  getParentNode(node: ExampleFlatNode) {
+  getParentNode(node: ExampleFlatNode): ExampleFlatNode | null {
     const nodeIndex = TREE_DATA.indexOf(node);
 
     for (let i = nodeIndex - 1; i >= 0; i--) {
@@ -96,14 +96,8 @@ export class CdkTreeComponent {
     return null;
   }
 
-  shouldRender(node: ExampleFlatNode) {
+  shouldRender(node: ExampleFlatNode): boolean | undefined {
     let parent = this.getParentNode(node);
-    while (parent) {
-      if (!parent.isExpanded) {
-        return false;
-      }
-      parent = this.getParentNode(parent);
-    }
-    return true;
+    return !parent || (parent.isExpanded && this.shouldRender(parent));
   }
 }
