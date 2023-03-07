@@ -1,6 +1,6 @@
 import { ArrayDataSource } from '@angular/cdk/collections';
-import { Component } from '@angular/core';
 import { FlatTreeControl } from '@angular/cdk/tree';
+import { Component } from '@angular/core';
 import { ExampleFlatNode } from './cdk-tree.model';
 import { CdkTreeService } from './cdk-tree.service';
 

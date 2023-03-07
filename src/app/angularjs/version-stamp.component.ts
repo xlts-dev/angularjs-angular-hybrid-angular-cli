@@ -17,6 +17,7 @@ export const versionStampComponent = {
         padding: 8px;
       }
       .version {
+        height: 24px;
         font-size: 0.75em;
         font-style: italic;
       }
@@ -30,11 +31,11 @@ export const versionStampComponent = {
 
     <md-divider id="version-stamp-divider"></md-divider>
     <div class="version-container">
-      <span class="version"><img src="/assets/angularjs.svg" alt="" height="24px"> AngularJS v{{ $ctrl.versions.angularjs.full }} ({{ $ctrl.versions.angularjs.codeName }})</span>
-      <span class="version"><img src="/assets/angularjs-material.png" alt="" height="24px"> AngularJS Material v{{ $ctrl.versions.md }}</span>
-      <span class="version"><img src="/assets/angular.svg" alt="" height="24px"> Angular v{{ $ctrl.versions.angular }}</span>
-      <span class="version"><img src="/assets/angular-cdk.svg" alt="" height="24px"> Angular CDK v{{ $ctrl.versions.cdk }}</span>
-      <span class="version"><img src="/assets/angular-material.svg" alt="" height="24px"> Angular Material v{{ $ctrl.versions.mat }}</span>
+      <span class="version"><img src="/assets/angularjs.svg" alt="" height="24"> AngularJS v{{ $ctrl.versions.angularjs.full }} ({{ $ctrl.versions.angularjs.codeName }})</span>
+      <span class="version"><img src="/assets/angularjs-material.png" alt="" height="24"> AngularJS Material v{{ $ctrl.versions.md }}</span>
+      <span class="version"><img src="/assets/angular.svg" alt="" height="24"> Angular v{{ $ctrl.versions.angular }}</span>
+      <span class="version"><img src="/assets/angular-cdk.svg" alt="" height="24"> Angular CDK v{{ $ctrl.versions.cdk }}</span>
+      <span class="version"><img src="/assets/angular-material.svg" alt="" height="24"> Angular Material v{{ $ctrl.versions.mat }}</span>
     </div>
   `,
   controller: class VersionStampCtrl {

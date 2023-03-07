@@ -10,7 +10,7 @@ import { Subject, takeUntil } from 'rxjs';
 })
 export class AppComponent implements OnInit, OnDestroy {
   static selector = 'appComponent';
-  private readonly destroyed: Subject<void> = new Subject<void>();
+  private readonly destroyed = new Subject<void>();
 
   @Input() name: string = 'Material';
 
