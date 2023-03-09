@@ -7,8 +7,8 @@
 @include mat.core();
 
 // Include theme styles for core and each component used in your app.
-// Alternatively, you can import and @include the theme mixins for each component
-// that you are using.
+// These mixins behave the same as individual component mixins, except they emit styles for core-theme and all 35+
+// components in Angular Material. Unless your application uses every single component, this will produce unnecessary CSS.
 @include mat.all-component-themes(theme.$app-theme);
 
 /* You can add global styles to this file, and also import other style files */

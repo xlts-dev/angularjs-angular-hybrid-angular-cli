@@ -1,6 +1,6 @@
 import { Directive, ElementRef, Injector } from '@angular/core';
-import { IScope, material } from 'angular';
 import { UpgradeComponent } from '@angular/upgrade/static';
+import { IScope, material } from 'angular';
 
 export const tabsComponent = {
   selector: 'app-ng1-tabs',
