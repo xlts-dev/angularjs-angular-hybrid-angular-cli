@@ -17,10 +17,10 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { NgModule } from '@angular/core';
 import { TabsComponent } from './tabs/tabs.component';
-import { TabsComponentDirective } from '../angularjs/tabs.component';
+import { TabsComponentFacade } from '../angularjs/tabs.component';
 import { ToastrModule } from 'ngx-toastr';
 import { TopNavComponent } from './top-nav/top-nav.component';
-import { VersionStampComponentDirective } from '../angularjs/version-stamp.component';
+import { VersionStampComponentFacade } from '../angularjs/version-stamp.component';
 
 @NgModule({
   imports: [
@@ -41,8 +41,8 @@ import { VersionStampComponentDirective } from '../angularjs/version-stamp.compo
   ],
   declarations: [
     AppComponent,
-    VersionStampComponentDirective,
-    TabsComponentDirective,
+    VersionStampComponentFacade,
+    TabsComponentFacade,
     TabsComponent,
     ButtonsComponent,
     CdkTreeComponent,

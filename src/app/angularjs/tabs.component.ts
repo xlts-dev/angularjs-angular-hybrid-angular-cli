@@ -25,7 +25,7 @@ export const tabsComponent = {
 };
 
 @Directive({ selector: tabsComponent.selector })
-export class TabsComponentDirective extends UpgradeComponent {
+export class TabsComponentFacade extends UpgradeComponent {
   constructor(elementRef: ElementRef, injector: Injector) {
     super(tabsComponent.selector, elementRef, injector);
   }

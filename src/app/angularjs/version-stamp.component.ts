@@ -31,11 +31,11 @@ export const versionStampComponent = {
 
     <md-divider id="version-stamp-divider"></md-divider>
     <div class="version-container">
-      <span class="version"><img src="/assets/angularjs.svg" alt="" height="24"> AngularJS v{{ $ctrl.versions.angularjs.full }} ({{ $ctrl.versions.angularjs.codeName }})</span>
-      <span class="version"><img src="/assets/angularjs-material.png" alt="" height="24"> AngularJS Material v{{ $ctrl.versions.md }}</span>
-      <span class="version"><img src="/assets/angular.svg" alt="" height="24"> Angular v{{ $ctrl.versions.angular }}</span>
-      <span class="version"><img src="/assets/angular-cdk.svg" alt="" height="24"> Angular CDK v{{ $ctrl.versions.cdk }}</span>
-      <span class="version"><img src="/assets/angular-material.svg" alt="" height="24"> Angular Material v{{ $ctrl.versions.mat }}</span>
+      <span class="version"><img src="/assets/angularjs.svg" alt=""> AngularJS v{{ $ctrl.versions.angularjs.full }} ({{ $ctrl.versions.angularjs.codeName }})</span>
+      <span class="version"><img src="/assets/angularjs-material.png" alt=""> AngularJS Material v{{ $ctrl.versions.md }}</span>
+      <span class="version"><img src="/assets/angular.svg" alt=""> Angular v{{ $ctrl.versions.angular }}</span>
+      <span class="version"><img src="/assets/angular-cdk.svg" alt=""> Angular CDK v{{ $ctrl.versions.cdk }}</span>
+      <span class="version"><img src="/assets/angular-material.svg" alt=""> Angular Material v{{ $ctrl.versions.mat }}</span>
     </div>
   `,
   controller: class VersionStampCtrl {
@@ -55,7 +55,7 @@ export const versionStampComponent = {
 };
 
 @Directive({ selector: versionStampComponent.selector })
-export class VersionStampComponentDirective extends UpgradeComponent {
+export class VersionStampComponentFacade extends UpgradeComponent {
   constructor(elementRef: ElementRef, injector: Injector) {
     super(versionStampComponent.selector, elementRef, injector);
   }
