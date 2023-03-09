@@ -27,7 +27,7 @@ test.describe('AngularJS-Angular hybrid app', () => {
     await page.goto('');
   });
 
-  test.afterEach(async ({ page }) => {
+  test.afterEach(async () => {
     expect(errorLogs).toStrictEqual([]);
   });
 
@@ -75,7 +75,6 @@ test.describe('AngularJS-Angular hybrid app', () => {
 
       await angularMaterialTabsPage.cdkTree.click();
       await expect(angularMaterialTabsPage.cdkTree).toHaveText('CDK Tree');
-
 
       await angularMaterialTabsPage.tabThree.click();
       await expect(angularMaterialTabsPage.tabThree).toHaveText('Tab Three');
@@ -148,9 +147,9 @@ test.describe('AngularJS-Angular hybrid app', () => {
 
       await topNavPage.clickOnGitHubIcon();
 
-      const githubRepoName = await page.waitForEvent('popup');
+      const githubPage = await page.waitForEvent('popup');
 
-      await expect(githubRepoName.url()).toBe('https://github.com/Splaktar/angularjs-angular-material-hybrid-demo');
+      await expect(githubPage.url()).toBe('https://github.com/Splaktar/angularjs-angular-material-hybrid-demo');
     });
   });
 });
