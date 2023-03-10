@@ -1,12 +1,12 @@
 @use '@angular/material' as mat;
 @use 'theme';
 
-// Include the common styles for Angular Material. We include this here so that you only
-// have to load a single css file for Angular Material in your app.
-// Be sure that you only ever include this mixin once!
+// Include prerequisite styles for common features used by multiple components.
+// The core mixin must be included exactly once for your application, even if you define multiple themes.
+// Including the core mixin multiple times will result in duplicate CSS in your application.
 @include mat.core();
 
-// Include theme styles for core and each component used in your app.
+// Include styles for all components in the library.
 // These mixins behave the same as individual component mixins, except they emit styles for core-theme and all 35+
 // components in Angular Material. Unless your application uses every single component, this will produce unnecessary CSS.
 @include mat.all-component-themes(theme.$app-theme);
