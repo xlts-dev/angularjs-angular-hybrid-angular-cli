@@ -1,13 +1,8 @@
-import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { BrowserModule } from '@angular/platform-browser';
-import { ButtonsComponent } from './buttons/buttons.component';
-import { CdkTreeComponent } from './cdk-tree/cdk-tree.component';
+import { LayoutModule } from '@angular/cdk/layout';
 import { CdkTreeModule } from '@angular/cdk/tree';
-import { CdkTreeService } from './cdk-tree/cdk-tree.service';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-import { LayoutModule } from '@angular/cdk/layout';
+import { NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatExpansionModule } from '@angular/material/expansion';
@@ -15,12 +10,17 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { NgModule } from '@angular/core';
-import { TabsComponent } from './tabs/tabs.component';
-import { TabsComponentFacade } from '../angularjs/tabs.component';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
-import { TopNavComponent } from './top-nav/top-nav.component';
+import { TabsComponentFacade } from '../angularjs/tabs.component';
 import { VersionStampComponentFacade } from '../angularjs/version-stamp.component';
+import { AppComponent } from './app.component';
+import { ButtonsComponent } from './buttons/buttons.component';
+import { CdkTreeComponent } from './cdk-tree/cdk-tree.component';
+import { CdkTreeService } from './cdk-tree/cdk-tree.service';
+import { TabsComponent } from './tabs/tabs.component';
+import { TopNavComponent } from './top-nav/top-nav.component';
 
 @NgModule({
   imports: [
