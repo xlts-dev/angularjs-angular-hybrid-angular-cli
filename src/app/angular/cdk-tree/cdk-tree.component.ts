@@ -11,7 +11,7 @@ import { CdkTreeService } from './cdk-tree.service';
 })
 export class CdkTreeComponent {
   static selector = 'appCdkTree';
-  private treeData: ExampleFlatNode[] = this.cdkTreeService.getTreeData();
+  private readonly treeData: ExampleFlatNode[] = this.cdkTreeService.getTreeData();
   treeControl = new FlatTreeControl<ExampleFlatNode>(
     node => node.level,
     node => node.expandable
