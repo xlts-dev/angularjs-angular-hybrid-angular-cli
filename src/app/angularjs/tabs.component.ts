@@ -10,7 +10,6 @@ export const tabsComponent = {
     $digestCount = 0;
 
     constructor($scope: IScope) {
-      this.$digestCount = 0;
       $scope.$watch(() => {
         this.$digestCount++;
         if (this.$digestCount % 100 === 0) {

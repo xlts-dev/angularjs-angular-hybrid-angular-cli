@@ -20,7 +20,7 @@
     <button
       mat-icon-button
       cdkTreeNodeToggle
-      [attr.aria-label]="'toggle ' + node.filename"
+      [attr.aria-label]="'toggle ' + node.name"
       (click)="node.isExpanded = !node.isExpanded"
       [style.visibility]="node.expandable ? 'visible' : 'hidden'"
     >
