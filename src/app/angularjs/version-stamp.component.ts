@@ -17,11 +17,14 @@ export const versionStampComponent = {
         padding: 8px;
       }
       .version {
-        height: 24px;
+        display: flex;
+        align-items: center;
+        gap: 5px;
         font-size: 0.75em;
         font-style: italic;
       }
       .version img {
+        height: 24px;
         vertical-align: top;
       }
       #version-stamp-divider {
