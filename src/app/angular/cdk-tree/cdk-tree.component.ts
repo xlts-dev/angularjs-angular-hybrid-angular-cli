@@ -16,10 +16,9 @@ export class CdkTreeComponent {
     node => node.level,
     node => node.expandable
   );
+  dataSource = new ArrayDataSource(this.treeData);
 
   constructor(private cdkTreeService: CdkTreeService) {}
-
-  dataSource = new ArrayDataSource(this.treeData);
 
   hasChild = (_: number, node: ExampleFlatNode) => node.expandable;
 
