@@ -1,72 +1,8 @@
-import { Component } from '@angular/core';
-import { FlatTreeControl } from '@angular/cdk/tree';
 import { ArrayDataSource } from '@angular/cdk/collections';
-
-const TREE_DATA: ExampleFlatNode[] = [
-  {
-    name: 'Fruit',
-    expandable: true,
-    level: 0,
-  },
-  {
-    name: 'Apple',
-    expandable: false,
-    level: 1,
-  },
-  {
-    name: 'Banana',
-    expandable: false,
-    level: 1,
-  },
-  {
-    name: 'Fruit loops',
-    expandable: false,
-    level: 1,
-  },
-  {
-    name: 'Vegetables',
-    expandable: true,
-    level: 0,
-  },
-  {
-    name: 'Green',
-    expandable: true,
-    level: 1,
-  },
-  {
-    name: 'Broccoli',
-    expandable: false,
-    level: 2,
-  },
-  {
-    name: 'Brussels sprouts',
-    expandable: false,
-    level: 2,
-  },
-  {
-    name: 'Orange',
-    expandable: true,
-    level: 1,
-  },
-  {
-    name: 'Pumpkins',
-    expandable: false,
-    level: 2,
-  },
-  {
-    name: 'Carrots',
-    expandable: false,
-    level: 2,
-  },
-];
-
-/** Flat node with expandable and level information */
-interface ExampleFlatNode {
-  expandable: boolean;
-  name: string;
-  level: number;
-  isExpanded?: boolean;
-}
+import { FlatTreeControl } from '@angular/cdk/tree';
+import { Component } from '@angular/core';
+import { ExampleFlatNode } from './cdk-tree.model';
+import { CdkTreeService } from './cdk-tree.service';
 
 @Component({
   selector: 'app-cdk-tree',
@@ -75,21 +11,23 @@ interface ExampleFlatNode {
 })
 export class CdkTreeComponent {
   static selector = 'appCdkTree';
+  private readonly treeData: ExampleFlatNode[] = this.cdkTreeService.getTreeData();
   treeControl = new FlatTreeControl<ExampleFlatNode>(
     node => node.level,
     node => node.expandable
   );
+  dataSource = new ArrayDataSource(this.treeData);
 
-  dataSource = new ArrayDataSource(TREE_DATA);
+  constructor(private cdkTreeService: CdkTreeService) {}
 
   hasChild = (_: number, node: ExampleFlatNode) => node.expandable;
 
   getParentNode(node: ExampleFlatNode): ExampleFlatNode | null {
-    const nodeIndex = TREE_DATA.indexOf(node);
+    const nodeIndex = this.treeData.indexOf(node);
 
     for (let i = nodeIndex - 1; i >= 0; i--) {
-      if (TREE_DATA[i].level === node.level - 1) {
-        return TREE_DATA[i];
+      if (this.treeData[i].level === node.level - 1) {
+        return this.treeData[i];
       }
     }
 
@@ -97,7 +35,7 @@ export class CdkTreeComponent {
   }
 
   shouldRender(node: ExampleFlatNode): boolean | undefined {
-    let parent = this.getParentNode(node);
+    const parent = this.getParentNode(node);
     return !parent || (parent.isExpanded && this.shouldRender(parent));
   }
 }

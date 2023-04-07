@@ -6,7 +6,7 @@
 <div class="layout-margin">
   <div id="tabsContainer">
     <md-tabs md-dynamic-height md-border-bottom md-swipe-content>
-      <md-tab>
+      <md-tab ng-click="$ctrl.showSimpleToast('Buttons')">
         <md-tab-label>Buttons</md-tab-label>
         <md-tab-body>
           <md-subheader>Flat Buttons</md-subheader>
@@ -31,13 +31,13 @@
           </section>
         </md-tab-body>
       </md-tab>
-      <md-tab>
+      <md-tab ng-click="$ctrl.showSimpleToast('Tab two')">
         <md-tab-label>Tab two</md-tab-label>
         <md-tab-body>
           <div data-testid="tab-two-content" class="md-padding md-margin">Tab two content</div>
         </md-tab-body>
       </md-tab>
-      <md-tab>
+      <md-tab ng-click="$ctrl.showSimpleToast('Tab thre')">
         <md-tab-label>Tab three</md-tab-label>
         <md-tab-body>
           <div data-testid="ngjs-tab-three-content" class="md-padding md-margin">Tab three content</div>
