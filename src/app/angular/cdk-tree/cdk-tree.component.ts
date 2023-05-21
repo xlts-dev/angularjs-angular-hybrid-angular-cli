@@ -1,4 +1,4 @@
-import { ArrayDataSource } from '@angular/cdk/collections';
+import { ArrayDataSource, DataSource } from '@angular/cdk/collections';
 import { FlatTreeControl } from '@angular/cdk/tree';
 import { Component } from '@angular/core';
 import { ExampleFlatNode } from './cdk-tree.model';
@@ -11,14 +11,17 @@ import { CdkTreeService } from './cdk-tree.service';
 })
 export class CdkTreeComponent {
   static selector = 'appCdkTree';
-  private readonly treeData: ExampleFlatNode[] = this.cdkTreeService.getTreeData();
-  treeControl = new FlatTreeControl<ExampleFlatNode>(
+  private readonly treeData: ExampleFlatNode[];
+  readonly treeControl = new FlatTreeControl<ExampleFlatNode>(
     node => node.level,
     node => node.expandable
   );
-  dataSource = new ArrayDataSource(this.treeData);
+  readonly dataSource: DataSource<ExampleFlatNode>;
 
-  constructor(private cdkTreeService: CdkTreeService) {}
+  constructor(private cdkTreeService: CdkTreeService) {
+    this.treeData = this.cdkTreeService.getTreeData();
+    this.dataSource = new ArrayDataSource(this.treeData);
+  }
 
   hasChild = (_: number, node: ExampleFlatNode) => node.expandable;
 
